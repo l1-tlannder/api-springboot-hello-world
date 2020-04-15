@@ -19,6 +19,15 @@ dependencies {
 	}
 }
 
+jar {
+   enabled = true
+}
+
+bootJar {
+   classifier = 'restservice'
+	 archiveFileName = "app.jar"
+}
+
 test {
 	useJUnitPlatform()
 }
