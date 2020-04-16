@@ -32,4 +32,12 @@ The application will be build under
 build/libs/
 ```
 
-# Tests and release
+# Build with Docker
+```
+docker build --tag myapi:latest .
+```
+
+# Run Docker image
+```
+docker run --rm -p 8080:8080 --name api myapi
+```
