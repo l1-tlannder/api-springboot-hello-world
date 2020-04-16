@@ -2,12 +2,21 @@
 
 pipeline {
   agent none
+  environment {
+    customImage = null
+  }
   stages {
-    agent { label 'aws-ec2' }
     stage ('CI') {
+      agent{
+        node {
+          label 'aws-ec2'
+        }
+      }
       steps {
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
-        sh "docker run --rm -p 8080:8080 --name myapi ${customImage.id}"
+        script{
+          customImage = docker.build("my-image:${env.BUILD_ID}")
+        }
+        println "success build image: ${customImage.id}"
       }
     }
   }
