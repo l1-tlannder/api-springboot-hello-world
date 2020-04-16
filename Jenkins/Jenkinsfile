@@ -4,6 +4,7 @@ pipeline {
   agent none
   environment {
     customImage = null
+    AWS_DEFAULT_REGION = "us-east-1"
   }
   stages {
     stage ('CI') {
